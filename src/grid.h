@@ -36,6 +36,8 @@ struct grid
 {
     Case** cases;
     Dimension dimension;
+    int nMines;
+    int nFlag;
 };
 
 

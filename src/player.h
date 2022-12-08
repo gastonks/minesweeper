@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "grid.h"
 
 struct move
 {
@@ -15,7 +14,7 @@ struct move
 typedef struct move Move;
 
 Move inputPlayer(long int x, long int y);
-void playMove(Grid grid, Move move);
+void revealCase(Grid grid, Move move);
 void revealOtherBlank(Grid grid, int x, int y);
 
 

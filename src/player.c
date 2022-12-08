@@ -1,4 +1,6 @@
+#include "grid.h"
 #include "player.h"
+#include "game.h"
 
 Move inputPlayer(long int x, long int y){
 
@@ -42,21 +44,72 @@ Move inputPlayer(long int x, long int y){
     return move;
 }
 
-void playMove(Grid grid, Move move){
+
+
+void revealOtherBlank(Grid grid, int x, int y){
+    int i = x;
+    int j = y;
+    
+        //printf("return\n");
+        grid.cases[i][j].icon = '.';
+        grid.cases[i][j].state = Revealed;
+        //return;
+
+    /*
+    while(grid.cases[i][j].state == NotRevealed && grid.cases[i][j].mineNearby == 0 && i > 0 && i < grid.dimension.x-1 && j > 0 && j < grid.dimension.y-1){
+        if(grid.cases[i-1][j-1].mineNearby == 0 && grid.cases[i-1][j-1].state == NotRevealed){
+            grid.cases[i-1][j-1].icon = '.';
+            grid.cases[i-1][j-1].state = Revealed;
+        }
+        if(grid.cases[i-1][j].mineNearby == 0 && grid.cases[i-1][j-1].state == NotRevealed){
+            grid.cases[i-1][j].icon = '.';
+            grid.cases[i-1][j].state = Revealed;
+        }
+        if(grid.cases[i+1][j-1].mineNearby == 0 && grid.cases[i-1][j-1].state == NotRevealed){
+            grid.cases[i+1][j-1].icon = '.';
+            grid.cases[i+1][j-1].state = Revealed;
+        }
+        if(grid.cases[i][j+1].mineNearby == 0 && grid.cases[i-1][j-1].state == NotRevealed){
+            grid.cases[i][j+1].icon = '.';
+            grid.cases[i][j+1].state = Revealed;
+        }
+        if(grid.cases[i+1][j+1].mineNearby == 0 && grid.cases[i-1][j-1].state == NotRevealed){
+            grid.cases[i+1][j+1].icon = '.';
+            grid.cases[i+1][j+1].state = Revealed;
+        }
+        if(grid.cases[i+1][j].mineNearby == 0 && grid.cases[i-1][j-1].state == NotRevealed){
+            grid.cases[i+1][j].icon = '.';
+            grid.cases[i+1][j].state = Revealed;
+        }
+        if(grid.cases[i+1][j-1].mineNearby == 0 && grid.cases[i-1][j-1].state == NotRevealed){
+            grid.cases[i+1][j-1].icon = '.';
+            grid.cases[i+1][j-1].state = Revealed;
+        }
+        if(grid.cases[i][j-1].mineNearby == 0 && grid.cases[i-1][j-1].state == NotRevealed){
+            grid.cases[i][j-1].icon = '.';
+            grid.cases[i][j-1].state = Revealed;
+        }
+    }
+    */
+}
+
+
+
+void revealCase(Grid grid, Move move){
 
     int x = move.x;
     int y = move.y;
 
     if(move.flag == 1){
-        //placeFlag(x, y);
+        //placeFlag(grid, x, y);
     }
     
-    if(grid.cases[x][y].isMine == 0){
+    if(grid.cases[x][y].isMine == 0 && move.flag == 0){
         grid.cases[x][y].state = Revealed;
         switch (grid.cases[x][y].mineNearby)
         {
         case 0:
-            //revealOtherBlank(grid, x, y);
+            revealOtherBlank(grid, x, y);
             break;
         default:
             grid.cases[x][y].icon = (char)(grid.cases[x][y].mineNearby+48);
@@ -64,12 +117,9 @@ void playMove(Grid grid, Move move){
         }
     }
 
-    if(grid.cases[x][y].isMine == 1){
+    if(grid.cases[x][y].isMine == 1 && move.flag == 0){
         grid.cases[x][y].icon = '@';
         grid.cases[x][y].state = Revealed;
     }
 }
 
-void revealOtherBlank(Grid grid, int x, int y){
-
-}

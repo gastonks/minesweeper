@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "grid.h"
 #include "player.h"
+#include "game.h"
 
 int main (int argc, char** argv){
     
@@ -26,12 +27,12 @@ int main (int argc, char** argv){
         Grid board;
 
         board = genGrid(x, x, n);
+        board.dimension.x = x;
+        board.dimension.y = x;
+        board.nMines = n;
+        board.nFlag = 0;
 
-        printGrid(board, x, x);
-        Move move;
-        move = inputPlayer(x, x);
-        playMove(board, move);
-        printGrid(board, x, x);
+        gameLoop(board);
 
     }else if(argc == 3){
 
@@ -56,12 +57,12 @@ int main (int argc, char** argv){
         Grid board;
 
         board = genGrid(x, x, n);
+        board.dimension.x = x;
+        board.dimension.y = y;
+        board.nMines = n;
+        board.nFlag = 0;
 
-        printGrid(board, x, y);
-        Move move;
-        move = inputPlayer(x, y);
-        playMove(board, move);
-        printGrid(board, x, y);
+        gameLoop(board);
     }
 
     return 0;

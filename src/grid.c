@@ -161,6 +161,7 @@ void placeMine(Grid grid, long int x, long int y, long int nMine){
 
 
 void printGrid(Grid grid, long int x, long int y){
+    //system("clear");
     printf("X/Y ");
     for (int i = 0; i < y; i++)
     {
@@ -176,8 +177,6 @@ void printGrid(Grid grid, long int x, long int y){
         }
         printf("\n");
     }
-    
-    
 }
 
 
