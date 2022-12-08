@@ -56,7 +56,7 @@ int main (int argc, char** argv){
 
         Grid board;
 
-        board = genGrid(x, x, n);
+        board = genGrid(x, y, n);
         board.dimension.x = x;
         board.dimension.y = y;
         board.nMines = n;

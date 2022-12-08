@@ -14,8 +14,9 @@ struct move
 typedef struct move Move;
 
 Move inputPlayer(long int x, long int y);
-void revealCase(Grid grid, Move move);
+Grid revealCase(Grid grid, Move move);
 void revealOtherBlank(Grid grid, int x, int y);
+Grid placeFlag(Grid grid, int x, int y);
 
 
 #endif

@@ -4,6 +4,9 @@
 Grid genGrid(long int x, long int y, long int nMine){
     Grid grid;
 
+    grid.nMines = nMine;
+    grid.nFlag = 0;
+
     grid.cases = NULL;
 
     grid.cases = (Case**)malloc(x*sizeof(Case*));
@@ -12,14 +15,14 @@ Grid genGrid(long int x, long int y, long int nMine){
     {
         grid.cases[i] = (Case*)malloc(y*sizeof(Case));
     }
-    for (int i = 0; i < x; i++)
+    for (int j= 0; j < x; j++)
     {
-        for (int j = 0; j < y; j++)
+        for (int k = 0; k < y; k++)
         {
-            grid.cases[i][j].isMine = 0;
-            grid.cases[i][j].mineNearby = 0;
-            grid.cases[i][j].state = NotRevealed;
-            grid.cases[i][j].icon = '#';
+            grid.cases[j][k].isMine = 0;
+            grid.cases[j][k].mineNearby = 0;
+            grid.cases[j][k].state = NotRevealed;
+            grid.cases[j][k].icon = '#';
         }
     }
     
@@ -50,7 +53,6 @@ Grid genGrid(long int x, long int y, long int nMine){
 */
     return grid;
 
-    //freeGrid(grid, x);
 }
 
 void placeMine(Grid grid, long int x, long int y, long int nMine){
@@ -161,7 +163,6 @@ void placeMine(Grid grid, long int x, long int y, long int nMine){
 
 
 void printGrid(Grid grid, long int x, long int y){
-    //system("clear");
     printf("X/Y ");
     for (int i = 0; i < y; i++)
     {

@@ -34,7 +34,7 @@ Move inputPlayer(long int x, long int y){
 	error = scanf("%d", &n);
 	while (error == 0 || n > 2)
 	{
-		fprintf(stderr, "ERROR: Error in the input.\nThe input is not a number or it's neither 1 nor 2.\n");
+		fprintf(stderr, "ERROR: Error in the input.\nThe input is not a number or it's neither 0 nor 1.\n");
 		printf("Try again with a number:");
 		getchar();
 		error = scanf("%d", &n);
@@ -93,15 +93,20 @@ void revealOtherBlank(Grid grid, int x, int y){
     */
 }
 
+Grid placeFlag(Grid grid, int x, int y){
+    grid.cases[x][y].state = Flagged;
+    grid.cases[x][y].icon = 'F';
+    grid.nFlag = grid.nFlag + 1;
+    return grid;
+}
 
-
-void revealCase(Grid grid, Move move){
+Grid revealCase(Grid grid, Move move){
 
     int x = move.x;
     int y = move.y;
 
     if(move.flag == 1){
-        //placeFlag(grid, x, y);
+        grid = placeFlag(grid, x, y);
     }
     
     if(grid.cases[x][y].isMine == 0 && move.flag == 0){
@@ -121,5 +126,7 @@ void revealCase(Grid grid, Move move){
         grid.cases[x][y].icon = '@';
         grid.cases[x][y].state = Revealed;
     }
+
+    return grid;
 }
 
