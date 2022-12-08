@@ -1,7 +1,26 @@
+/**
+* Minesweeper
+* @file player.c
+* @author Romain Barre
+* @date 2022-10-25
+* @version 0.1 Debut
+* @brief The game 'Minesweeper' in the terminal.
+*/
+
+/* Inclusion of the libraries */
 #include "grid.h"
 #include "player.h"
 #include "game.h"
 
+/** @fn Move inputPlayer(long int x, long int y)
+ * 
+ * @param x The dimension X of the grid.
+ * @param y The dimension Y of the grid.
+ * 
+ * @return Return a move from the player.
+ * 
+ * This function allows the player to the game.
+*/
 Move inputPlayer(long int x, long int y){
 
     Move move;
@@ -45,7 +64,16 @@ Move inputPlayer(long int x, long int y){
 }
 
 
-
+/** void revealOtherBlank(Grid grid, int x, int y)
+ * 
+ * @param grid The grid of the minesweeper.
+ * @param x The coordinate X that the player choose to play on.
+ * @param y The coordinate Y that the player choose to play on.
+ * 
+ * @return Return nothing.
+ * 
+ * This procedure reveals the case around an empty until a mine is encountered.
+*/
 void revealOtherBlank(Grid grid, int x, int y){
     int i = x;
     int j = y;
@@ -105,6 +133,17 @@ void revealOtherBlank(Grid grid, int x, int y){
     */
 }
 
+
+/** Grid placeFlag(Grid grid, int x, int y)
+ * 
+ * @param grid The grid of the minesweeper.
+ * @param x The coordinate X that the player choose to play on.
+ * @param y The coordinate Y that the player choose to play on.
+ * 
+ * @return Return the grid.
+ * 
+ * This function places a flag where the player has played.
+*/
 Grid placeFlag(Grid grid, int x, int y){
     grid.cases[x][y].state = Flagged;
     grid.cases[x][y].icon = 'F';
@@ -112,6 +151,16 @@ Grid placeFlag(Grid grid, int x, int y){
     return grid;
 }
 
+/** Grid removeFlag(Grid grid, int x, int y)
+ * 
+ * @param grid The grid of the minesweeper.
+ * @param x The coordinate X that the player choose to play on.
+ * @param y The coordinate Y that the player choose to play on.
+ * 
+ * @return Return the grid.
+ * 
+ * This function removes a flag where the player has played.
+*/
 Grid removeFlag(Grid grid, int x, int y){
     grid.cases[x][y].state = NotRevealed;
     grid.cases[x][y].icon = '#';
@@ -119,6 +168,15 @@ Grid removeFlag(Grid grid, int x, int y){
     return grid;
 }
 
+/** Grid revealCase(Grid grid, Move move)
+ * 
+ * @param grid The grid of the minesweeper.
+ * @param move The move of the player..
+ * 
+ * @return Return the grid.
+ * 
+ * This function reveals the case where the player hes played.
+*/
 Grid revealCase(Grid grid, Move move){
 
     int x = move.x;

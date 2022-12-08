@@ -1,8 +1,28 @@
+/**
+* Minesweeper
+* @file main.c
+* @author Romain Barre
+* @date 2022-10-25
+* @version 0.1 Debut
+* @brief The game 'Minesweeper' in the terminal.
+*/
+
+/* Inclusion of the libraries */
 #include <stdio.h>
 #include "grid.h"
 #include "player.h"
 #include "game.h"
 
+
+/** @fn int main (int argc, char** argv)
+ * 
+ * @param argc The number of parameter.
+ * @param agrv The list of all the parameters, included the name of the program.
+ * 
+ * @return Return a number to indicate the good execution of the main function.
+ * 
+ * This function is entry point of the program.
+*/
 int main (int argc, char** argv){
     
     system("clear");

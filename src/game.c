@@ -2,6 +2,14 @@
 #include "player.h"
 #include "game.h"
 
+/** @fn void gameLoop(Grid grid)
+ * 
+ * @param grid The grid of the minesweeper.
+ * 
+ * @return Return nothing.
+ * 
+ * This procedure loops the entire game.
+*/
 void gameLoop(Grid grid){
     //system("clear");
     Move move;
@@ -35,6 +43,14 @@ void gameLoop(Grid grid){
     }
 }
 
+/** @fn int allGridRevealed(Grid grid)
+ * 
+ * @param grid The grid of the minesweeper.
+ * 
+ * @return Return 1 or 0 if the grid is fully revealed.
+ * 
+ * This function checks the entire grid to see if the case without a mine are revealed.
+*/
 int allGridRevealed(Grid grid){
 
     int allRevealed = 0;
@@ -55,6 +71,14 @@ int allGridRevealed(Grid grid){
     return allRevealed;
 }
 
+/** @fn int allGridFlagged(Grid grid)
+ * 
+ * @param grid The grid of the minesweeper.
+ * 
+ * @return Return 1 or 0 if the grid is fully flagged.
+ * 
+ * This function checks the entire grid to see if the case with a mine are flagged.
+*/
 int allGridFlagged(Grid grid){
 
     int allFlagged = 1;
@@ -71,6 +95,15 @@ int allGridFlagged(Grid grid){
     return allFlagged;
 }
 
+/** @fn int mineDetonated(Move move, Grid grid)
+ * 
+ * @param move Move of the player.
+ * @param grid The grid of the minesweeper.
+ * 
+ * @return Return 1 or 0 if mine explode.
+ * 
+ * This function checks if the move of the player detonate a mine or not.
+*/
 int mineDetonated(Move move, Grid grid){
     int mineDetonated = 0;
 
@@ -82,6 +115,15 @@ int mineDetonated(Move move, Grid grid){
     return mineDetonated;
 }
 
+/** @fn void printLoseGrid(Grid grid, Move badMove)
+ * 
+ * @param badMove Move of the player.
+ * @param grid The grid of the minesweeper.
+ * 
+ * @return Return nothing.
+ * 
+ * This procedure prints the grid when the players loses with the last move played.
+*/
 void printLoseGrid(Grid grid, Move badMove){
     printf("X/Y ");
     for (int i = 0; i < grid.dimension.y; i++)

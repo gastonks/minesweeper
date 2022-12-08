@@ -1,6 +1,26 @@
+/**
+* Minesweeper
+* @file grid.c
+* @author Romain Barre
+* @date 2022-10-25
+* @version 0.1 Debut
+* @brief The game 'Minesweeper' in the terminal.
+*/
+
+/* Inclusion of the libraries */
 #include "grid.h"
 #include "player.h"
 
+/** @fn Grid genGrid(long int x, long int y, long int nMine)
+ * 
+ * @param x The dimension X of the grid.
+ * @param y The dimension Y of the grid.
+ * @param nMine The number of mine the player choose.
+ * 
+ * @return Return a new grid the game.
+ * 
+ * This function generates a new grid for a new game of minesweeper.
+*/
 Grid genGrid(long int x, long int y, long int nMine){
     Grid grid;
 
@@ -57,6 +77,18 @@ Grid genGrid(long int x, long int y, long int nMine){
 
 }
 
+
+/** @fn void placeMine(Grid grid, long int x, long int y, long int nMine)
+ * 
+ * @param grid The grid fo minesweeper.
+ * @param x The dimension X of the grid.
+ * @param y The dimension Y of the grid.
+ * @param nMine The number of mine the player choose.
+ * 
+ * @return Return nothing.
+ * 
+ * This procedure places mines randomly in the grid.
+*/
 void placeMine(Grid grid, long int x, long int y, long int nMine){
     
     srand(time(NULL));
@@ -163,7 +195,16 @@ void placeMine(Grid grid, long int x, long int y, long int nMine){
     }
 }
 
-
+/** @fn void printGrid(Grid grid, long int x, long int y)
+ * 
+ * @param grid The grid fo minesweeper.
+ * @param x The dimension X of the grid.
+ * @param y The dimension Y of the grid.
+ * 
+ * @return Return nothing.
+ * 
+ * This procedure prints the grid with the icons of each case.
+*/
 void printGrid(Grid grid, long int x, long int y){
     printf("X/Y ");
     for (int i = 0; i < y; i++)
@@ -183,7 +224,15 @@ void printGrid(Grid grid, long int x, long int y){
     printf("Mines : %d / %d\n", grid.nFlag, grid.nMines);
 }
 
-
+/** @fn void freeGrid(Grid grid, long int x)
+ * 
+ * @param grid The grid fo minesweeper.
+ * @param x The dimension X of the grid.
+ * 
+ * @return Return nothing.
+ * 
+ * This procedure frees the memory.
+*/
 void freeGrid(Grid grid, long int x){
     for (int m = 0; m < x; m++)
     {
