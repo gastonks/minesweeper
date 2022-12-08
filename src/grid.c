@@ -38,6 +38,8 @@ Grid genGrid(long int x, long int y, long int nMine){
         }
         printf("\n");
     }
+
+
 /*
     printf("\n\n----------------------------------------------------------\n\n");
 
@@ -178,6 +180,7 @@ void printGrid(Grid grid, long int x, long int y){
         }
         printf("\n");
     }
+    printf("Mines : %d / %d\n", grid.nFlag, grid.nMines);
 }
 
 

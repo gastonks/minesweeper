@@ -9,5 +9,6 @@ void gameLoop(Grid grid);
 int allGridRevealed(Grid grid);
 int allGridFlagged(Grid grid);
 int mineDetonated(Move move, Grid grid);
+void printLoseGrid(Grid grid, Move badMove);
 
 #endif
