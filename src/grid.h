@@ -8,8 +8,8 @@
 
 enum State{
     Revealed,
-    Flagged,
-    Empty
+    NotRevealed,
+    Flagged
 };
 
 typedef enum State State;
@@ -24,9 +24,26 @@ struct Case
 
 typedef struct Case Case;
 
+struct Dimension
+{
+    long int x;
+    long int y;
+};
 
-void genGrid(long int x, long int y, long int nMine);
-void placeMine(Case** grid, long int x, long int y, long int nMine);
-void freeGrid(Case** grid, long int x);
+typedef struct Dimension Dimension;
+
+struct grid
+{
+    Case** cases;
+    Dimension dimension;
+};
+
+
+typedef struct grid Grid;
+
+Grid genGrid(long int x, long int y, long int nMine);
+void placeMine(Grid grid, long int x, long int y, long int nMine);
+void printGrid(Grid grid, long int x, long int y);
+void freeGrid(Grid grid, long int x);
 
 #endif
