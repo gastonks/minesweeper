@@ -1,19 +1,21 @@
 #include "grid.h"
 
 void genGrid(long int x, long int y){
-    int** grid = NULL;
+    Case** grid = NULL;
 
-    grid = (int**)malloc(x*sizeof(int*));
+    grid = (Case**)malloc(x*sizeof(Case*));
 
     for (int i = 0; i < x; i++)
     {
-        grid[i] = (int*)malloc(y*sizeof(int));
+        grid[i] = (Case*)malloc(y*sizeof(Case));
     }
     for (int i = 0; i < x; i++)
     {
         for (int j = 0; j < y; j++)
         {
-            grid[i][j] = 0;
+            grid[i][j].isMine = 0;
+            grid[i][j].mineNearby = 0;
+            grid[i][j].state = Empty;
         }
     }
     
@@ -22,7 +24,7 @@ void genGrid(long int x, long int y){
     {
         for (int l = 0; l < y; l++)
         {
-            printf("%d ", grid[h][l]);
+            printf("%d ", grid[h][l].mineNearby);
         }
         printf("\n");
     }
