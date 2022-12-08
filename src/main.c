@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include "grid.h"
+#include "player.h"
 
 int main (int argc, char** argv){
     
     system("clear");
-    //printf("Hello, world!");
-
 
     if(argc == 2){
         long int x = strtol(argv[1], NULL, 10);
         int n = 0;
         int maxMine = (int)(x*x);
-        printf("Max mine = %d\n", maxMine);
+        printf("Maximum of mines = %d\n", maxMine);
 
         printf("How many mines do you want:");
 		int error = scanf("%d", &n);
@@ -23,9 +22,17 @@ int main (int argc, char** argv){
 			getchar();
 			error = scanf("%d", &n);
 		}
-        
 
-        genGrid(x, x, n);
+        Grid board;
+
+        board = genGrid(x, x, n);
+
+        printGrid(board, x, x);
+        Move move;
+        move = inputPlayer(x, x);
+        playMove(board, move);
+        printGrid(board, x, x);
+
     }else if(argc == 3){
 
         long int x = strtol(argv[1], NULL, 10);
@@ -34,6 +41,7 @@ int main (int argc, char** argv){
         int n = 0;
         int maxMine = (int)(x*y);
 
+        printf("Maximum of mines = %d\n", maxMine);
         printf("How many mines do you want:");
 		int error = scanf("%d", &n);
 		while (error == 0 || n > maxMine)
@@ -44,7 +52,16 @@ int main (int argc, char** argv){
 			getchar();
 			error = scanf("%d", &n);
 		}
-        genGrid(x,y, n);
+
+        Grid board;
+
+        board = genGrid(x, x, n);
+
+        printGrid(board, x, y);
+        Move move;
+        move = inputPlayer(x, y);
+        playMove(board, move);
+        printGrid(board, x, y);
     }
 
     return 0;
