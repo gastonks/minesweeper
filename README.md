@@ -16,5 +16,15 @@ make
 
 Finally, to execute the program, run
 ```
-./bin/main
+./bin/main [DIMENSION] ([DIMENSION])
 ```
+
+For example,
+```
+./bin/main 10
+```
+will launch the game with a grid of 10x10. Or you can do,
+```
+./bin/main 10 5
+```
+that will launch a game with a grid of 5x10.
