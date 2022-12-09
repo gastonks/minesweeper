@@ -46,10 +46,8 @@ Grid genGrid(long int x, long int y, long int nMine){
         }
     }
     
-
-    printf("\n\n----------------------------------------------------------\n\n");
     placeMine(grid, x, y, nMine);
-
+/*
     for (int h = 0; h < x; h++)
     {
         for (int l = 0; l < y; l++)
@@ -59,7 +57,7 @@ Grid genGrid(long int x, long int y, long int nMine){
         printf("\n");
     }
 
-
+*/
 /*
     printf("\n\n----------------------------------------------------------\n\n");
 
