@@ -17,7 +17,7 @@
 /** @fn int main (int argc, char** argv)
  * 
  * @param argc The number of parameter.
- * @param agrv The list of all the parameters, included the name of the program.
+ * @param argv The list of all the parameters, included the name of the program.
  * 
  * @return Return a number to indicate the good execution of the main function.
  * 

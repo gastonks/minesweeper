@@ -47,30 +47,7 @@ Grid genGrid(long int x, long int y, long int nMine){
     }
     
     placeMine(grid, x, y, nMine);
-/*
-    for (int h = 0; h < x; h++)
-    {
-        for (int l = 0; l < y; l++)
-        {
-            printf("%d ", grid.cases[h][l].isMine);
-        }
-        printf("\n");
-    }
 
-*/
-/*
-    printf("\n\n----------------------------------------------------------\n\n");
-
-
-    for (int h = 0; h < x; h++)
-    {
-        for (int l = 0; l < y; l++)
-        {
-            printf("%d ", grid[h][l].mineNearby);
-        }
-        printf("\n");
-    }
-*/
     return grid;
 
 }
@@ -111,9 +88,6 @@ void placeMine(Grid grid, long int x, long int y, long int nMine){
             grid.cases[i][j].isMine = 1;
             n++;
         }
-
-
-        //printf("i = %d\nj = %d\n", i, j);
 
         /* mine in the middle of the grid.cases*/
         if((i > 0 && j > 0) && (i < x-1 && j < y-1)){

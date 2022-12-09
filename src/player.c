@@ -199,7 +199,6 @@ Grid revealCase(Grid grid, Move move){
         {
         case 0:
             grid = revealOtherBlank(grid, move);
-            //grid.cases[x][y].icon = '.';
             break;
         default:
             grid.cases[x][y].icon = (char)(grid.cases[x][y].mineNearby+48);
